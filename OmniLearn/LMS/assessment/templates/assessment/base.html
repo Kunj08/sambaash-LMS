@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'assessment:home' %}">Isha</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- <a class="nav-item nav-link active" href="{% url 'assessment:home' %}">Home <span class="sr-only">(current)</span></a> -->
+            {% if user.is_authenticated %}
+              <a class="nav-item nav-link active" href="{% url 'assessment:home' %}">Home</a>
+              {% if user.is_superuser %}
+                <a class="nav-item nav-link active" href="{% url 'admin:index' %}">Admin</a>
+              {% endif %}
+              <a class="nav-item nav-link active" href="{% url 'assessment:myassmentment' %}">My Assessment</a>
+              <!-- <a href="{% url 'assessment:logout' %}" class="nav-item nav-link">Logout</a> -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{user.username}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a href="{% url 'assessment:logout' %}" class="dropdown-item">Logout</a>
+                </div>
+              </li>
+            {% else %}
+              <a href="{% url 'assessment:user_login' %}" class="nav-item nav-link" >Login</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      {% block body_block %}
+      {% endblock %}
+    </div>
+    <script type="text/javascript" src="{% static 'js/myscript.js' %}"></script>
+  </body>
+</html>

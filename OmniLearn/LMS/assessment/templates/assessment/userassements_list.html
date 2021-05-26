@@ -1,0 +1,31 @@
+{% extends "assessment/base.html" %}
+{% block body_block %}
+<table id="list-table" class="table table-striped table-bordered mt-5">
+  <thead>
+    <tr>
+      <th>Assessment Submitted Date</th>
+      {% if user.is_superuser %}
+        <th>Created By</th>
+      {% endif %}
+      <th>View Assessment Results</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if myAssments|length > 0 %}
+      {% for assessment in myAssments %}
+          <tr>
+            <td>{{assessment.created_date|date:"d M, Y, h:i A"}}</td>
+            {% if user.is_superuser %}
+              <td>{{assessment.user.username}}</td>
+            {% endif %}
+            <td> <a href="{% url 'assessment:result' pk=assessment.pk %}">Assessment-{{forloop.counter}}</a></td>
+          </tr>
+      {% endfor %}
+    {% else %}
+      <tr>
+        <td colspan="2" class="text-center">Not Any Assessment Submitted.</td>
+      </tr>
+    {% endif %}
+  </tbody>
+</table>
+{% endblock %}
