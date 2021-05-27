@@ -8,24 +8,29 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
+from .forms import assementForm
 # from django.http import HttpResponse
 
 @method_decorator(login_required(login_url='assessment:user_login'),name='dispatch')
 class assementCreate(CreateView):
     model = models.userAssements
-    fields = ("A1","E1","P1","N1","A2","H1","M1","R1","M2","E2","Lon","H2","P2","N2","A3","N3","E3","H3","R2","M3","R3","P3","hap",
-                "Q1","Q2","Q3","Q4","Q5","Q6","Q7","Q8","Q9","Q10","Q11","Q12","going_beyond_stress","finding_sustained_happiness",
-                "mental_emotional_wellness","positive_parenting","healthy_relationship","accelerated_professional_growth",
-                "healthy_lifestyle","user")
+    form_class = assementForm
+    # fields = ("A1","E1","P1","N1","A2","H1","M1","R1","M2","E2","Lon","H2","P2","N2","A3","N3","E3","H3","R2","M3","R3","P3","hap",
+    #             "Q1","Q2","Q3","Q4","Q5","Q6","Q7","Q8","Q9","Q10","Q11","Q12","going_beyond_stress","finding_sustained_happiness",
+    #             "mental_emotional_wellness","positive_parenting","healthy_relationship","accelerated_professional_growth",
+    #             "healthy_lifestyle","user")
     template_name = 'assessment/index.html'
+
 
 @method_decorator(login_required(login_url='assessment:user_login'),name='dispatch')
 class assementUpdate(UpdateView):
     model = models.userAssements
-    fields = ("A1","E1","P1","N1","A2","H1","M1","R1","M2","E2","Lon","H2","P2","N2","A3","N3","E3","H3","R2","M3","R3","P3","hap",
-                "Q1","Q2","Q3","Q4","Q5","Q6","Q7","Q8","Q9","Q10","Q11","Q12","going_beyond_stress","finding_sustained_happiness",
-                "mental_emotional_wellness","positive_parenting","healthy_relationship","accelerated_professional_growth",
-                "healthy_lifestyle")
+    form_class = assementForm
+    # fields = ("A1","E1","P1","N1","A2","H1","M1","R1","M2","E2","Lon","H2","P2","N2","A3","N3","E3","H3","R2","M3","R3","P3","hap",
+    #             "Q1","Q2","Q3","Q4","Q5","Q6","Q7","Q8","Q9","Q10","Q11","Q12","going_beyond_stress","finding_sustained_happiness",
+    #             "mental_emotional_wellness","positive_parenting","healthy_relationship","accelerated_professional_growth",
+    #             "healthy_lifestyle")
+
     template_name = 'assessment/assmentUpdate.html'
 
 class assementList(ListView):

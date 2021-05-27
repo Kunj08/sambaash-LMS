@@ -79,3 +79,6 @@ th{
 .navbar-nav {
   margin-left: auto !important;
 }
+.border{
+  border: 3px solid #dc3545 !important;
+}
