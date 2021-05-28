@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^result/(?P<pk>\d+)/$',views.assementUpdate.as_view(),name="result"),
     path('login/', views.user_login,name="user_login"),
     path('logout/',views.user_logout,name='logout'),
-    path('myassment/',views.assementList.as_view(),name="myassmentment")
+    path('myassment/',views.assementList.as_view(),name="myassmentment"),
+    url(r'^ajax/userResult/$',views.assement_result,name="userResultData")
 ]

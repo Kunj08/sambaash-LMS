@@ -61,4 +61,4 @@ class userAssements(models.Model):
         return str(timezone.localtime(self.created_date).strftime("%d %b, %Y, %I:%M %p %Z"))
 
     def get_absolute_url(self):
-        return reverse('assessment:result',kwargs={'pk':self.pk})
+        return reverse('assessment:myassmentment')
