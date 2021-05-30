@@ -1,7 +1,7 @@
 function formValidation(){
   var chqBox = $("#form-validate *").filter(":input[type=checkbox]:checked");
   var nextSubmit = false;
-  if(chqBox.length <= 0 || chqBox.length > 2){
+  if(chqBox.length <= 0 || chqBox.length < 2 || chqBox.length > 2){
     // alert("Please take top two areas of interest or priority for you in section C!");
     var modal = $('#errorModel');
     modal.find('.modal-body').text('Please take top two areas of interest or priority for you in section C!');

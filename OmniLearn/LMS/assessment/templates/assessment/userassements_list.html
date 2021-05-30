@@ -5,32 +5,40 @@
 <form id="resultForm" class="d-none">
   {{form.as_p}}
 </form>
+{% if myAssments|length > 0 %}
+<h3 class="text-center">Assessment results and interpretation</h3>
+<div class="mt-5"></div>
 <div class="row">
   <div class="col-sm-12 col-xs-12 col-lg-3 col-xl-3">
-    <aside class="sidebar mb-5">
+    <aside class="sidebar">
       <nav>
         <ul>
-          {% if myAssments|length > 0 %}
-            {% for assessment in myAssments reversed %}
+            {% for assessment in myAssments %}
               {% if forloop.counter == 1 %}
                 <li><a class="findResult" id={{assessment.pk}}><span id="firstClick"><b>{{assessment.created_date|date:"d M, Y, h:i A T"}}</b></span></a></li>
               {% else %}
                 <li><a class="findResult" id={{assessment.pk}}><b>{{assessment.created_date|date:"d M, Y, h:i A T"}}</b></a></li>
               {% endif %}
             {% endfor %}
-          {% endif %}
         </ul>
       </nav>
     </aside>
   </div>
-  <div class="col-sm-12 col-xs-12 col-lg-9 col-xl-9">
+  <div class="col-sm-12 col-xs-12 col-lg-9 col-xl-9 bordered">
     <div id="overlay">
       <div class="loader"></div>
     </div>
     <h3 id="assessmentTime"></h3>
     <div class="form-result">
       <p><b>Based on your responses, Your scores on various parameters of Wellbeing are as follows:</b></p>
-      <table id="result-table" class="table table-striped table-bordered">
+      <table id="result-table1" class="table table-striped table-bordered">
+        <tbody>
+        </tbody>
+      </table>
+      <div id="betText">
+
+      </div>
+      <table id="result-table2" class="table table-striped table-bordered">
         <tbody>
         </tbody>
       </table>
@@ -44,6 +52,13 @@
       <p><b>Disclaimer: Test results on the self-assessment scale do not reflect any particular diagnosis or course of treatment.
         They are meant as a tool to help assess your current level of Stress and Wellbeing. Should you have any further concerns about your current well-being, you may contact a certified medical physician.</b></p>
     </div>
+  </div>
+</div>
+<div class="row mb-5 mt-3">
+  <div class="col-sm-12 text-center">
+    <p>If you learn to create the right climate in your body, mind, and emotion, your health, wellbeing, and joy - everything will be taken care of.
+      <span> <b>- Sadhguru</b> </span>
+    </p>
   </div>
 </div>
 <div class="d-none">
@@ -92,8 +107,15 @@
     <input type="checkbox" id="CHQ5">
     <input type="checkbox" id="CHQ6">
     <input type="checkbox" id="CHQ7">
+    <input type="checkbox" id="CHQ8">
   </form>
 </div>
+{% else %}
+  <div class="no-record-message">
+    <h3>No, Assessment Found</h3>
+    <p>Please Submit Atleast One assessment and come back. <a href="{% url 'assessment:home' %}">Click Here</a> for submit</p>
+  </div>
+{% endif %}
 <script type="text/javascript">
   $(document).ready(function(){
     $("#firstClick").closest(".findResult").click();
@@ -110,7 +132,7 @@
       },
       dataType:'json',
       success: function(data){
-        $("#assessmentTime").html(timeText);
+        //$("#assessmentTime").html(timeText);
         $("#id_A1").val(data.A1);
         $("#id_A2").val(data.A2);
         $("#id_A3").val(data.A3);
@@ -147,7 +169,6 @@
         $("#id_Q10").val(data.Q10);
         $("#id_Q11").val(data.Q11);
         $("#id_Q12").val(data.Q12);
-        debugger;
         $("#CHQ1").prop('checked',data.CQ1);
         $("#CHQ2").prop('checked',data.CQ2);
         $("#CHQ3").prop('checked',data.CQ3);
@@ -155,6 +176,7 @@
         $("#CHQ5").prop('checked',data.CQ5);
         $("#CHQ6").prop('checked',data.CQ6);
         $("#CHQ7").prop('checked',data.CQ7);
+        $("#CHQ8").prop('checked',data.CQ8);
         doMentalWellbeingAssessment();
         setTimeout(function(){$("#overlay").hide();},500);
       }

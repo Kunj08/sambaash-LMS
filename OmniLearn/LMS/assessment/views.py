@@ -125,6 +125,7 @@ def assement_result(request):
     'CQ4':result.positive_parenting,
     'CQ5':result.healthy_relationship,
     'CQ6':result.accelerated_professional_growth,
-    'CQ7':result.healthy_lifestyle
+    'CQ7':result.healthy_lifestyle,
+    'CQ8':result.coping_with_the_covid_situation
     }
     return JsonResponse(data)

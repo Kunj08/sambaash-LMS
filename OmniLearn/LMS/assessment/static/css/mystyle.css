@@ -96,12 +96,15 @@ th{
 /* sidebar */
 
 .sidebar{
-  border-right: 1px solid #dee2e6;
-  border-left: 1px solid #dee2e6;
+  border: 1px solid #dee2e6;
+  /* border-left: 1px solid #dee2e6; */
 }
 .sidebar nav{
-  height:900px;
+  height:1050px;
   overflow-y:auto;
+}
+.bordered{
+  border: 0.1px solid #dee2e6;
 }
 .sidebar nav ul{
   margin:0;
@@ -162,4 +165,13 @@ th{
 }
 .activeLi{
   color:#DECA5B !important;
+}
+
+#text-bet{
+  border: none !important;
+  background-color: #FFFFFF !important;
+}
+#text-bet td{
+  border: none !important;
+  background-color: #FFFFFF !important;
 }
