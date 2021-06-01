@@ -79,3 +79,99 @@ th{
 .navbar-nav {
   margin-left: auto !important;
 }
+.border1{
+  border-top: 3px solid #dc3545 !important;
+  border-bottom: 3px solid #dc3545 !important;
+  border-left: 3px solid #dc3545 !important;
+}
+.border2{
+  border-top: 3px solid #dc3545 !important;
+  border-bottom: 3px solid #dc3545 !important;
+}
+.border3{
+  border-top: 3px solid #dc3545 !important;
+  border-bottom: 3px solid #dc3545 !important;
+  border-right: 3px solid #dc3545 !important;
+}
+/* sidebar */
+
+.sidebar{
+  border: 1px solid #dee2e6;
+  /* border-left: 1px solid #dee2e6; */
+}
+.sidebar nav{
+  height:1050px;
+  overflow-y:auto;
+}
+.bordered{
+  border: 0.1px solid #dee2e6;
+}
+.sidebar nav ul{
+  margin:0;
+  padding:0;
+}
+.sidebar nav ul li{
+  height:50px;
+  list-style: none;
+  line-height: 50px;
+  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #dee2e6;
+  background-color: rgba(0,0,0,.05);
+  padding: 0 20px;
+  font-size: 16px;
+}
+.sidebar nav ul li a{
+  text-decoration:none;
+  color: #000000;
+  cursor: pointer;
+}
+.sidebar nav ul li a:hover{
+  color:#DECA5B;
+  cursor: pointer;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  margin:auto;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  position:absolute;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#overlay {
+  position: absolute; /* Sit on top of the page content */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background-color: rgba(255,255,255,0.7); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+.activeLi{
+  color:#DECA5B !important;
+}
+
+#text-bet{
+  border: none !important;
+  background-color: #FFFFFF !important;
+}
+#text-bet td{
+  border: none !important;
+  background-color: #FFFFFF !important;
+}
